@@ -1,0 +1,53 @@
+gcloud ==> command ine tool for google cloud
+
+gcloud auth list ==> enlistar las cuentas activas
+gcloud config list project ==> enlistar los proyectos activos 
+
+Habilitar algunos servicios de google:
+gcloud services enable \
+  compute.googleapis.com \
+  iam.googleapis.com \
+  iamcredentials.googleapis.com \
+  monitoring.googleapis.com \
+  logging.googleapis.com \
+  notebooks.googleapis.com \
+  aiplatform.googleapis.com \
+  bigquery.googleapis.com \
+  artifactregistry.googleapis.com \
+  cloudbuild.googleapis.com \
+  container.googleapis.com
+
+  Revisar tensorboard para monitoreo de modelos:
+  https://neptune.ai/blog/tensorboard-tutorial
+
+-----------------------------------------------------------------------
+Vertex AI Quicklab : Revisar ejemplo completo en:
+-----------------------------------------------------------------------
+'training-data-analyst/self-paced-labs/vertex-ai/vertex-ai-qwikstart'
+Acá encuentras como escribir un .py desde vertex
+
+Para EDA se puede usar una notebook de vertex y usar BQ:
+
+%%bigquery frequency
+
+SELECT
+  n_purchases
+FROM
+  `online_retail.online_retail_clv_ml`
+
+(convierte el resultado del query en un dataframe)
+
+Hay que subir los datasets a Vertex para poder hacer modelos de AutoML o modelos Customs
+Antes de submitear un custom training job, hyperparameter tunning job, or training pipeline to Vertex AI. Es necesario crear una aplicación de entrenamiento en python (python training aplication) o un custom container para definir el codigo de entrenamiento y las dependencias que quieres crear en Vertex AI. Hay dos opciones para crear un container:
+1. Usar un pre-builit container de google. (realizar un entrenamiento y predicción rápido)
+2. Usar tu propio container image.*:
+2.1. Python training script 
+2.2. Dockerfile: Codigo del modelamiento, dependencias e instrucciones de ejecución.
+Se crea el contenedor con cloud build y se hace el push del container en GCR (Google Container Registry)
+Se realiza el modelamiento de esta forma con la finalidad de empaquetar el codigo de entrenamiento y dependencias para usarlo como pare te de un Pipeline de Vertex.
+
+
+
+
+
+
