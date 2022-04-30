@@ -38,7 +38,9 @@ FROM
 (convierte el resultado del query en un dataframe)
 
 Hay que subir los datasets a Vertex para poder hacer modelos de AutoML o modelos Customs
-Antes de submitear un custom training job, hyperparameter tunning job, or training pipeline to Vertex AI. Es necesario crear una aplicación de entrenamiento en python (python training aplication) o un custom container para definir el codigo de entrenamiento y las dependencias que quieres crear en Vertex AI. Hay dos opciones para crear un container:
+Antes de submitear un custom training job, hyperparameter tunning job, or training pipeline to Vertex AI. 
+Es necesario crear una aplicación de entrenamiento en python (python training aplication) o 
+un custom container para definir el codigo de entrenamiento y las dependencias que quieres crear en Vertex AI. Hay dos opciones para crear un container:
 1. Usar un pre-builit container de google. (realizar un entrenamiento y predicción rápido)
 2. Usar tu propio container image.*:
 2.1. Python training script 
@@ -47,7 +49,10 @@ Se crea el contenedor con cloud build y se hace el push del container en GCR (Go
 Se realiza el modelamiento de esta forma con la finalidad de empaquetar el codigo de entrenamiento y dependencias para usarlo como pare te de un Pipeline de Vertex.
 
 
-
+-----------------------------------------------------------------------
+Vertex_Pipelines_QwikStart : Revisar ejemplo completo en:
+-----------------------------------------------------------------------
+Vertex_Pipelines_QwikStart.ipynb
 
 
 
